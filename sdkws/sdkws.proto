@@ -202,6 +202,8 @@ message MsgData {
   string attachedInfo = 22;
   string ex = 23;
   repeated string specifyRecipient = 24; // 指定消息接受者。如：群消息指定接收用户；通知指定接收用户
+  repeated string readUsers = 25; // 消息已读用户缓存
+  int32 operateStatus = 26; // 消息操作状态：0、无操作；1、可使用；2、已完成；3、已失效。此字段针对消息需要交互的场景使用，不需要交互的消息默认0
 }
 message PushMessages{
   map<string, PullMsgs> msgs = 1;
