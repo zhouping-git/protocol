@@ -122,6 +122,23 @@ message SetConversationHasReadSeqReq {
 message SetConversationHasReadSeqResp {
 }
 
+message SetMarkUserReadMsgReq {
+  string conversationID = 1;
+  string userID = 2;
+  int64 seq = 3;
+}
+
+message SetMarkUserReadMsgResp {}
+
+message SetMarkMsgOperateStatusReq {
+  string conversationID = 1;
+  string userID = 2;
+  int64 seq = 3;
+  int32 state = 4;
+}
+
+message SetMarkMsgOperateStatusResp {}
+
 message DeleteSyncOpt {
   bool IsSyncSelf = 3;
   bool IsSyncOther = 4;
@@ -319,6 +336,10 @@ service msg {
   rpc MarkMsgsAsRead(MarkMsgsAsReadReq) returns(MarkMsgsAsReadResp);
   rpc MarkConversationAsRead(MarkConversationAsReadReq) returns(MarkConversationAsReadResp);
   rpc SetConversationHasReadSeq(SetConversationHasReadSeqReq) returns(SetConversationHasReadSeqResp);
+  // 设置消息某个用户已读-自定义实现
+  rpc SetMarkUserReadMsg(SetMarkUserReadMsgReq) returns(SetMarkUserReadMsgResp);
+  // 修改消息操作状态-自定义实现
+  rpc SetMarkMsgOperateStatus(SetMarkMsgOperateStatusReq) returns(SetMarkMsgOperateStatusResp);
   
   rpc GetConversationsHasReadAndMaxSeq(GetConversationsHasReadAndMaxSeqReq) returns(GetConversationsHasReadAndMaxSeqResp);
 
