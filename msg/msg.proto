@@ -134,7 +134,8 @@ message SetMarkMsgOperateStatusReq {
   string conversationID = 1;
   string userID = 2;
   int64 seq = 3;
-  int32 state = 4;
+  int32 state = 4; // 消息操作状态：0、无操作；1、可使用；2、已完成；3、已失效。此字段针对消息需要交互的场景使用，不需要交互的消息默认0
+  bool isAddRead = 5; // 是否将用户添加到已读记录
 }
 
 message SetMarkMsgOperateStatusResp {}
