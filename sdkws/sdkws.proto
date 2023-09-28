@@ -501,10 +501,17 @@ message ClearConversationTips {
   repeated string conversationIDs = 2;
 }
 
+message UpdateMsgsTips {
+  string userId = 1;
+  string conversationID = 2;
+  repeated int64 seqs = 3;
+}
+
 message DeleteMsgsTips {
   string userID  = 1;
   string conversationID = 2;
   repeated int64 seqs = 3;
+  bool isRefresh = 4;
 }
 
 message MarkAsReadTips {
