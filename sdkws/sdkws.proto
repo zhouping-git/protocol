@@ -15,6 +15,7 @@
 syntax = "proto3";
 package OpenIMServer.sdkws;
 import "wrapperspb/wrapperspb.proto";
+import "google/protobuf/any.proto";
 option go_package = "github.com/OpenIMSDK/protocol/sdkws";
 
 ////////////////////////////////base///////////////////////////////
@@ -501,12 +502,16 @@ message ClearConversationTips {
   repeated string conversationIDs = 2;
 }
 
+message UpdateItemTips {
+  map<string, google.protobuf.Any> updateItem = 1;
+}
+
 message UpdateMsgsTips {
   string userId = 1;
   string conversationID = 2;
   repeated int64 seqs = 3;
-  bool isRefresh = 4;
-  repeated MsgData msgs = 5;
+  repeated UpdateItemTips msgs = 4;
+  bool isRefresh = 5;
 }
 
 message DeleteMsgsTips {
