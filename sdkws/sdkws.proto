@@ -505,13 +505,14 @@ message UpdateMsgsTips {
   string userId = 1;
   string conversationID = 2;
   repeated int64 seqs = 3;
+  bool isRefresh = 4;
+  repeated MsgData msgs = 5;
 }
 
 message DeleteMsgsTips {
   string userID  = 1;
   string conversationID = 2;
   repeated int64 seqs = 3;
-  bool isRefresh = 4;
 }
 
 message MarkAsReadTips {
