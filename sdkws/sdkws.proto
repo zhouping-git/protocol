@@ -501,15 +501,11 @@ message ClearConversationTips {
   repeated string conversationIDs = 2;
 }
 
-message UpdateItemTips {
-  map<string, bytes> updateItem = 1;
-}
-
 message UpdateMsgsTips {
   string userId = 1;
   string conversationID = 2;
   repeated int64 seqs = 3;
-  repeated UpdateItemTips msgs = 4;
+  repeated bytes msgs = 4;
   bool isRefresh = 5;
 }
 
